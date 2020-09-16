@@ -14,9 +14,9 @@ all: client server
 client: mathtest.pb.o mathtest.grpc.pb.o client.o
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
-obj := $(prod.o) 
+obj := $(product.o) 
 server: mathtest.pb.o mathtest.grpc.pb.o product.o server.o 
-	$(CXX) $^ -o $@ $(LDFLAGS) 
+	$(CXX) $^ $(obj) -o $@ $(LDFLAGS) 
 
 %.grpc.pb.cc: %.proto
 	protoc --grpc_out=. --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
