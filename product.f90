@@ -1,9 +1,9 @@
-subroutine product(a,b,prod)
+subroutine product(a,b,prod)  bind(c, name="testprod")
  
-    integer a,b
+        integer a,b
     
-    integer prod
+        integer prod
  
-    prod=a*b
- 
-end
+        prod=a*b
+        return
+end 

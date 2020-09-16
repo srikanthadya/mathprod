@@ -16,7 +16,7 @@ using mathtest::MathTest;
 using mathtest::MathRequest;
 using mathtest::MathReply;
 
-extern "C" void product(int *a, int *b , int *prod);
+extern "C" void product_(int *a, int *b , int *prod);
 class MathServiceImplementation final : public MathTest::Service {
     Status sendRequest(
         ServerContext* context, 
@@ -26,7 +26,7 @@ class MathServiceImplementation final : public MathTest::Service {
         int a = request->a();
         int b = request->b();
         int prod = 0;
-        product(&a,&b,&prod);
+        product_(&a,&b,&prod);
         reply->set_result(prod);
 
         return Status::OK;
